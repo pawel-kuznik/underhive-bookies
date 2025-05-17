@@ -5,7 +5,7 @@ import { initialHouses } from './initialHouses';
 
 interface HouseStore {
   houses: House[];
-  addHouse: (name: string, reference: string) => void;
+  addHouse: (name: string, reference: string) => House;
   removeHouse: (id: string) => void;
   updateHouse: (house: House) => void;
   findHouseById: (id: string) => House | undefined;
@@ -24,6 +24,8 @@ export const useHouseStore = create<HouseStore>((set, get) => ({
     set((state) => ({
       houses: [...state.houses, newHouse],
     }));
+
+    return newHouse;
   },
 
   removeHouse: (id: string) => {
