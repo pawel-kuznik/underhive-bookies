@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useRuleStore } from "../../store/ruleStore";
 import type { Rule } from "../../types/rule";
 import "./RulePicker.css";
+import { filterRulesByKeyword } from "../../actions/filterRulesByKeyword";
 
 export interface RulePickerProps {
     onPick?: (rule: Rule) => void;
@@ -13,19 +15,21 @@ export interface RulePickerProps {
  */
 export function RulePicker({ onPick }: RulePickerProps) {
 
+    const [keyword, setKeyword] = useState<string>("");
     const { rules } = useRuleStore();
     const sortedRules = rules.sort((a, b) => a.title.localeCompare(b.title));
+    const filteredRules = filterRulesByKeyword(sortedRules, keyword);
 
     return (
         <table className="rulepicker">
             <thead>
                 <tr>
                     <th colSpan={2}>
-
+                        <input type="search" placeholder="Search" onChange={(e) => setKeyword(e.target.value)} />
                     </th>
                 </tr>
             </thead>
-            {sortedRules.map((rule) => (
+            {filteredRules.map((rule) => (
                 <tr onClick={() => onPick?.(rule)}>
                     <td>{rule.title}</td>
                     <td>{rule.description}</td>

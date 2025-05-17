@@ -1,35 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useGangStore } from '../store/gangStore';
 import { useNavigate } from 'react-router-dom';
 
 const Gangs: React.FC = () => {
-  const { gangs, createGang, removeGang } = useGangStore();
-  const [newGangName, setNewGangName] = useState('');
+  const { gangs, removeGang } = useGangStore();
   const navigate = useNavigate();
-
-  const handleCreateGang = () => {
-    if (newGangName.trim()) {
-      createGang(newGangName.trim());
-      setNewGangName('');
-    }
-  };
 
   return (
     <div>
       <h1>Gangs</h1>
       <div className="gangs-container">
         <div className="gangs-header">
-          <input
-            type="text"
-            value={newGangName}
-            onChange={(e) => setNewGangName(e.target.value)}
-            placeholder="Enter gang name"
-            className="gang-name-input"
-          />
           <button 
-            className="add-gang-button"
-            onClick={handleCreateGang}
-            disabled={!newGangName.trim()}
+            className="create-gang-button"
+            onClick={() => navigate('/hideout/gangs/create')}
           >
             Create New Gang
           </button>

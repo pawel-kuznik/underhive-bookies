@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { Equipment } from '../types/equipment';
+import { initialEquipment } from './initialEquipment';
 
 interface EquipmentStore {
     equipment: Equipment[];
@@ -10,7 +11,7 @@ interface EquipmentStore {
 }
 
 export const useEquipmentStore = create<EquipmentStore>((set, get) => ({
-    equipment: [],
+    equipment: initialEquipment,
 
     addEquipment: (equipment: Equipment) => {
         set((state) => ({

@@ -1,4 +1,4 @@
-import { FormFieldLayout } from "@pawel-kuznik/react-faceplate";
+import { Button, FormFieldLayout } from "@pawel-kuznik/react-faceplate";
 import type { Weapon } from "../../types/weapon";
 import { useState } from "react";
 import { List } from "./List";
@@ -12,8 +12,13 @@ export interface WeaponFormFieldProps {
 
 export function WeaponFormField({ label, name, onPick }: WeaponFormFieldProps) {
     const [selected, setSelected] = useState<Weapon[]>([]);
+    const [picking, setPicking] = useState<boolean>(false);
 
     const handlePick = (weapon: Weapon) => {
+        if (selected.find(w => w.id === weapon.id)) {
+            return;
+        }
+
         setSelected([...selected, weapon]);
         onPick?.(weapon);
     }
@@ -26,7 +31,8 @@ export function WeaponFormField({ label, name, onPick }: WeaponFormFieldProps) {
         <FormFieldLayout label={label}>
             <input type="hidden" name={name} value={selected.map(w => w.id).join(',')} />
             <List weapons={selected} onRemove={handleRemove} />
-            <WeaponPicker onPick={handlePick} />
+            <Button label="Pick" onClick={() => setPicking(!picking)} />
+            {picking && <WeaponPicker onPick={handlePick} />}
         </FormFieldLayout>
     )
 } 

@@ -8,7 +8,8 @@ export function createFighterArchetype(name: string, house: House) {
         name,
         houseId: house.id,
         rules: [],
-        wargear: [],
+        weapons: [],
+        equipment: [],
     };
 
     return newArchetype;

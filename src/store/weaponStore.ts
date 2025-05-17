@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import type { Weapon } from '../types/weapon';
-import { v4 as uuidv4 } from 'uuid';
 import { initialWeapons } from './initialWeapons';
 
 interface WeaponStore {
@@ -13,7 +12,7 @@ interface WeaponStore {
 }
 
 export const useWeaponStore = create<WeaponStore>((set, get) => ({
-  weapons: [],
+  weapons: initialWeapons,
 
   addWeapon: (weapon: Weapon) => {
     set((state) => ({

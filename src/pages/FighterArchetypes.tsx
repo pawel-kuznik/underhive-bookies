@@ -32,8 +32,7 @@ const FighterArchetypes: React.FC = () => {
       return (
         archetype.name.toLowerCase().includes(searchLower) || 
         (house?.name.toLowerCase().includes(searchLower) ?? false) ||
-        archetypeRules.toLowerCase().includes(searchLower) ||
-        archetype.wargear.some(item => item.toLowerCase().includes(searchLower))
+        archetypeRules.toLowerCase().includes(searchLower)
       );
     });
 
@@ -95,15 +94,6 @@ const FighterArchetypes: React.FC = () => {
                     {archetype.rules.map(ruleId => (
                       <RuleAnchor key={ruleId} rule={ruleId} />
                     ))}
-                </div>
-
-                <div className="archetype-wargear">
-                  <h4>Wargear:</h4>
-                  <ul>
-                    {archetype.wargear.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
                 </div>
 
                 <div className="archetype-actions">

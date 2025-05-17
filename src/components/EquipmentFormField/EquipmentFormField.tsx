@@ -1,8 +1,8 @@
-import { FormFieldLayout } from "@pawel-kuznik/react-faceplate";
+import { Button, FormFieldLayout } from "@pawel-kuznik/react-faceplate";
 import type { Equipment } from "../../types/equipment";
-import { EquipmentPicker } from "../EquipmentPicker";
 import { useState } from "react";
 import { List } from "./List";
+import { EquipmentPicker } from "../EquipmentPicker";
 
 export interface EquipmentFormFieldProps {
     label: string;
@@ -12,8 +12,13 @@ export interface EquipmentFormFieldProps {
 
 export function EquipmentFormField({ label, name, onPick }: EquipmentFormFieldProps) {
     const [selected, setSelected] = useState<Equipment[]>([]);
+    const [picking, setPicking] = useState<boolean>(false);
 
     const handlePick = (equipment: Equipment) => {
+        if (selected.find(e => e.id === equipment.id)) {
+            return;
+        }
+
         setSelected([...selected, equipment]);
         onPick?.(equipment);
     }
@@ -26,7 +31,8 @@ export function EquipmentFormField({ label, name, onPick }: EquipmentFormFieldPr
         <FormFieldLayout label={label}>
             <input type="hidden" name={name} value={selected.map(e => e.id).join(',')} />
             <List equipment={selected} onRemove={handleRemove} />
-            <EquipmentPicker onPick={handlePick} />
+            <Button label="Pick" onClick={() => setPicking(!picking)} />
+            {picking && <EquipmentPicker onPick={handlePick} />}
         </FormFieldLayout>
     )
 } 

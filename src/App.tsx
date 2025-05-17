@@ -12,6 +12,7 @@ import Houses from './pages/Houses';
 import TradingPost from './pages/TradingPost';
 import PrepareRoster from './pages/PrepareRoster';
 import GangRosters from './pages/GangRosters';
+import CreateGang from './pages/CreateGang';
 import { AppFrame } from './components/AppFrame';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<div>Welcome to Underhive Bookies</div>} />
             <Route path="/hideout/gangs" element={<Gangs />} />
+            <Route path="/hideout/gangs/create" element={<CreateGang />} />
             <Route path="/hideout/gang/:id" element={<GangDetails />} />
             <Route path="/hideout/gang/:id/trading-post" element={<TradingPost />} />
             <Route path="/hideout/gang/:id/rosters" element={<GangRosters />} />

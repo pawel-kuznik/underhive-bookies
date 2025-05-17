@@ -1,12 +1,13 @@
 import { create } from 'zustand';
 import type { FighterArchetype } from '../types/fighterArchetype';
-import { v4 as uuidv4 } from 'uuid';
 import { initialArchetypes } from './initialArchetypes';
+import { createFighterArchetype } from '../actions/createFighterArchetype';
+import { getHouse } from '../actions/getHouse';
 
 interface FighterArchetypeStore {
   archetypes: FighterArchetype[];
   insertArchetype: (archetype: FighterArchetype) => void;
-  addArchetype: (name: string, rules: string[], wargear: string[], houseId: string) => void;
+  addArchetype: (name: string, houseId: string) => void;
   removeArchetype: (id: string) => void;
   updateArchetype: (archetype: FighterArchetype) => void;
   findArchetypeById: (id: string) => FighterArchetype | undefined;
@@ -15,14 +16,9 @@ interface FighterArchetypeStore {
 export const useFighterArchetypeStore = create<FighterArchetypeStore>((set, get) => ({
   archetypes: initialArchetypes,
 
-  addArchetype: (name: string, rules: string[], wargear: string[], houseId: string) => {
-    const newArchetype: FighterArchetype = {
-      id: uuidv4(),
-      name,
-      rules,
-      wargear,
-      houseId,
-    };
+  addArchetype: (name: string, houseId: string) => {
+    const house = getHouse(houseId);
+    const newArchetype = createFighterArchetype(name, house);
 
     set((state) => ({
       archetypes: [...state.archetypes, newArchetype],
@@ -50,4 +46,4 @@ export const useFighterArchetypeStore = create<FighterArchetypeStore>((set, get)
   findArchetypeById: (id: string) => {
     return get().archetypes.find((archetype) => archetype.id === id);
   },
-})); 
+}));
