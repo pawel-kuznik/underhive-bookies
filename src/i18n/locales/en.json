@@ -1,0 +1,26 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "navigation": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "house": {
+    "create": "Create House",
+    "edit": "Save Changes",
+    "name": "House Name",
+    "reference": "Reference",
+    "createSuccess": "House created successfully",
+    "updateSuccess": "House updated successfully"
+  },
+  "table": {
+    "name": "Name",
+    "reference": "Reference"
+  }
+} 

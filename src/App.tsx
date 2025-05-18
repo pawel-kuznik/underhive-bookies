@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Campaign from './pages/Campaign';
 import Rules from './pages/Rules';
@@ -9,11 +9,13 @@ import GangDetails from './pages/GangDetails';
 import FighterArchetypes from './pages/FighterArchetypes';
 import FighterArchetypePage from './pages/FighterArchetypePage';
 import Houses from './pages/Houses';
+import CreateHouse from './pages/CreateHouse';
 import TradingPost from './pages/TradingPost';
 import PrepareRoster from './pages/PrepareRoster';
 import GangRosters from './pages/GangRosters';
 import CreateGang from './pages/CreateGang';
 import { AppFrame } from './components/AppFrame';
+import "@pawel-kuznik/react-faceplate/lib/themes/nostalgia-neon/index.css";
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
             <Route path="/codex/fighter-archetype/new" element={<FighterArchetypePage />} />
             <Route path="/codex/fighter-archetype/:id" element={<FighterArchetypePage />} />
             <Route path="/codex/houses" element={<Houses />} />
+            <Route path="/codex/houses/new" element={<CreateHouse />} />
+            <Route path="/codex/houses/:id" element={<CreateHouse />} />
           </Routes>
         </AppFrame>
     </Router>

@@ -1,0 +1,26 @@
+{
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj"
+  },
+  "navigation": {
+    "home": "Strona główna",
+    "settings": "Ustawienia"
+  },
+  "house": {
+    "create": "Utwórz Dom",
+    "edit": "Zapisz zmiany",
+    "name": "Nazwa Domu",
+    "reference": "Referencja",
+    "createSuccess": "Dom został utworzony",
+    "updateSuccess": "Dom został zaktualizowany"
+  },
+  "table": {
+    "name": "Nazwa",
+    "reference": "Referencja"
+  }
+} 

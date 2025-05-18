@@ -1,0 +1,26 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken"
+  },
+  "navigation": {
+    "home": "Home",
+    "settings": "Instellingen"
+  },
+  "house": {
+    "create": "Huis aanmaken",
+    "edit": "Wijzigingen opslaan",
+    "name": "Huisnaam",
+    "reference": "Referentie",
+    "createSuccess": "Huis succesvol aangemaakt",
+    "updateSuccess": "Huis succesvol bijgewerkt"
+  },
+  "table": {
+    "name": "Naam",
+    "reference": "Referentie"
+  }
+} 
