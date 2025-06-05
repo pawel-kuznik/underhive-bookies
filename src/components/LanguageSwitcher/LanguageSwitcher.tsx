@@ -1,5 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
+/**
+ *  A component to switch the language of the application.
+ */
 export function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
 

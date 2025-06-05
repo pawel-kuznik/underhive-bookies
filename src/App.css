@@ -195,18 +195,6 @@
 }
 
 /* Gang Details Page Styles */
-.gang-details {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.gang-details-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
 
 .back-button {
   background-color: #6c757d;
