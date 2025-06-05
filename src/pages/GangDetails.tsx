@@ -3,8 +3,11 @@ import { useGangStore } from '../store/gangStore';
 import { FighterForm } from '../components/FighterForm';
 import { FighterCard } from '../components/FighterCard';
 import { addCreditsToGang } from '../actions/addCreditsToGang';
-import { Page } from '@pawel-kuznik/react-faceplate';
+import { Button, ButtonLine, Page } from '@pawel-kuznik/react-faceplate';
 import { useHouse } from '../utils/useHouse';
+import { DescriptiveTitle } from '../components/DescriptiveTitle/DescriptiveTitle';
+import { Counter } from '../components/Counter';
+import { calculateGangValue } from '../actions/calculateGangValue';
 
 /**
  *  A page that displays the details of a gang.
@@ -12,7 +15,7 @@ import { useHouse } from '../utils/useHouse';
 export default function GangDetails() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { gangs, updateGang } = useGangStore();
+  const { gangs, updateGang, removeGang } = useGangStore();
   const gang = gangs.find(g => g.id === id);
 
   if (!gang) {
@@ -33,19 +36,27 @@ export default function GangDetails() {
     addCreditsToGang(gang.id, credits);
   };
 
+  const handleRemoveGang = () => {
+
+    // TODO: Add a confirmation dialog
+
+    removeGang(gang.id);
+    navigate('/hideout/gangs');
+  };
+
   return (
     <Page>
-      <div className="gang-details">
-        <div className="gang-details-header">
-          <h1>{gang.name}</h1>
-        </div>
+      <DescriptiveTitle title={gang.name} description={house.name}>
+        <ButtonLine>
+          <Counter value={gang.reputation} label="Reputation"/>
+          <Counter value={gang.credits} label="Credits"/>
+          <Counter value={calculateGangValue(gang)} label="Value"/>
+          <Button label="Remove" color="red" onClick={handleRemoveGang}/>
+        </ButtonLine>
+      </DescriptiveTitle>
 
         <div className="gang-info">
           <div className="gang-stats">
-            <h2>Gang Information</h2>
-            <p>House: {house.name}</p>
-            <p>Credits: {gang.credits}</p>
-            <p>Reputation: {gang.reputation}</p>
             <button onClick={() => handleAddCredits(100)}>Add Credits</button>
             <button 
               className="trading-post-button"
@@ -84,7 +95,6 @@ export default function GangDetails() {
             </div>
           </div>
         </div>
-      </div>
     </Page>
   );
 };
