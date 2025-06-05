@@ -9,7 +9,14 @@
   },
   "navigation": {
     "home": "Home",
-    "settings": "Settings"
+    "settings": "Settings",
+    "gangs": "Gangs",
+    "campaign": "Campaign",
+    "rules": "Rules",
+    "weapons": "Weapons",
+    "equipment": "Equipment",
+    "fighter-archetypes": "Fighter Archetypes",
+    "houses": "Houses"
   },
   "house": {
     "create": "Create House",
@@ -22,5 +29,11 @@
   "table": {
     "name": "Name",
     "reference": "Reference"
+  },
+  "language": {
+    "english": "English",
+    "polish": "Polish",
+    "german": "German",
+    "dutch": "Dutch"
   }
 } 

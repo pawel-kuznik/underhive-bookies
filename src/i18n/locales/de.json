@@ -9,7 +9,14 @@
   },
   "navigation": {
     "home": "Startseite",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "gangs": "Gangs",
+    "campaign": "Kampagne",
+    "rules": "Regeln",
+    "weapons": "Waffen",
+    "equipment": "Ausrüstung",
+    "fighter-archetypes": "Kämpfer-Archetypen",
+    "houses": "Häuser"
   },
   "house": {
     "create": "Haus erstellen",
@@ -22,5 +29,11 @@
   "table": {
     "name": "Name",
     "reference": "Referenz"
+  },
+  "language": {
+    "english": "Englisch",
+    "polish": "Polnisch",
+    "german": "Deutsch",
+    "dutch": "Niederländisch"
   }
 } 

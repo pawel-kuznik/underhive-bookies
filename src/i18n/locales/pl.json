@@ -9,7 +9,14 @@
   },
   "navigation": {
     "home": "Strona główna",
-    "settings": "Ustawienia"
+    "settings": "Ustawienia",
+    "gangs": "Gangi",
+    "campaign": "Kampania",
+    "rules": "Zasady",
+    "weapons": "Broń",
+    "equipment": "Wyposażenie",
+    "fighter-archetypes": "Archetypy Wojowników",
+    "houses": "Domy"
   },
   "house": {
     "create": "Utwórz Dom",
@@ -22,5 +29,11 @@
   "table": {
     "name": "Nazwa",
     "reference": "Referencja"
+  },
+  "language": {
+    "english": "Angielski",
+    "polish": "Polski",
+    "german": "Niemiecki",
+    "dutch": "Holenderski"
   }
 } 

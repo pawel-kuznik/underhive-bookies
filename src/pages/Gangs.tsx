@@ -1,8 +1,11 @@
-import React from 'react';
 import { useGangStore } from '../store/gangStore';
 import { useNavigate } from 'react-router-dom';
 
-const Gangs: React.FC = () => {
+
+/**
+ *  A page that displays a list of gangs and allows the user to create a new gang.
+ */
+export default function Gangs() {
   const { gangs, removeGang } = useGangStore();
   const navigate = useNavigate();
 
@@ -52,6 +55,4 @@ const Gangs: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default Gangs; 
+}

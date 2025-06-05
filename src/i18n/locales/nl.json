@@ -9,7 +9,14 @@
   },
   "navigation": {
     "home": "Home",
-    "settings": "Instellingen"
+    "settings": "Instellingen",
+    "gangs": "Bendes",
+    "campaign": "Campagne",
+    "rules": "Regels",
+    "weapons": "Wapens",
+    "equipment": "Uitrusting",
+    "fighter-archetypes": "Vechter-Archetypes",
+    "houses": "Huizen"
   },
   "house": {
     "create": "Huis aanmaken",
@@ -22,5 +29,11 @@
   "table": {
     "name": "Naam",
     "reference": "Referentie"
+  },
+  "language": {
+    "english": "Engels",
+    "polish": "Pools",
+    "german": "Duits",
+    "dutch": "Nederlands"
   }
 } 

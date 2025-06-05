@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When creating UI, prefer components found in the @pawel-kuznik/react-faceplate library.
