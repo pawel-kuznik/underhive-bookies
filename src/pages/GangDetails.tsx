@@ -78,8 +78,7 @@ export default function GangDetails() {
             </button>
           </div>
 
-          <div className="members-section">
-            <h2>Gang Members</h2>
+          <div>
             <div className="add-member">
               <FighterForm gangId={gang.id}/>
             </div>
