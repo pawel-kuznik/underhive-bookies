@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFighterArchetypeStore } from '../store/fighterArchetypeStore';
 import { useHouseStore } from '../store/houseStore';
@@ -8,7 +8,7 @@ import { RuleAnchor } from '../components/RuleAnchor/RuleAnchor';
 
 type SortDirection = 'asc' | 'desc';
 
-const FighterArchetypes: React.FC = () => {
+export function FighterArchetypes() {
   const navigate = useNavigate();
   const { archetypes, removeArchetype } = useFighterArchetypeStore();
   const { houses } = useHouseStore();
@@ -118,5 +118,3 @@ const FighterArchetypes: React.FC = () => {
     </div>
   );
 };
-
-export default FighterArchetypes; 

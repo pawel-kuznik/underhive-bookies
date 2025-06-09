@@ -8,6 +8,7 @@ export interface FighterArchetype {
   id: string;
   name: string;
   houseId: string;
+  baseValue: number;
   rules: string[];
   weapons: string[];
   equipment: string[];

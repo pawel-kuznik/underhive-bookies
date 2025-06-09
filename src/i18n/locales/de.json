@@ -26,6 +26,13 @@
     "createSuccess": "Haus erfolgreich erstellt",
     "updateSuccess": "Haus erfolgreich aktualisiert"
   },
+  "createGang": {
+    "name": "Gangname",
+    "house": "Haus",
+    "credits": "Startguthaben",
+    "create": "Gang erstellen",
+    "cancel": "Abbrechen"
+  },
   "table": {
     "name": "Name",
     "reference": "Referenz"
@@ -35,5 +42,14 @@
     "polish": "Polnisch",
     "german": "Deutsch",
     "dutch": "Niederländisch"
+  },
+  "gangDetails": {
+    "reputation": "Ruf",
+    "credits": "Kredite",
+    "value": "Bewertung",
+    "remove": "Gang Entfernen",
+    "members": "Mitglieder",
+    "rosters": "Roster",
+    "tradingPost": "Handelsposten"
   }
 } 

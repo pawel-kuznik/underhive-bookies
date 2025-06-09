@@ -13,9 +13,10 @@ export interface FighterCardProps {
     onRemoveMember?: (id: string) => void;
 }
 
+/**
+ *  A component that displays all information about a specific fighter.
+ */
 export function FighterCard({ fighter, onRemoveMember }: FighterCardProps) {
-
-    console.log(fighter);
 
     const { findWeaponById } = useWeaponStore();
 
@@ -33,6 +34,7 @@ export function FighterCard({ fighter, onRemoveMember }: FighterCardProps) {
         <ContentBox>
             <DescriptiveTitle title={fighter.name} description={archetype.name}>
                 <ButtonLine>
+                    <Counter value={fighter.xp} label="EXP"/>
                     <Counter value={calculateFighterValue(fighter)} label="Value"/>
                     {onRemoveMember && <Button label="Remove" color="red" onClick={handleRemoveMember}/>}    
                 </ButtonLine>

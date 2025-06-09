@@ -1,3 +1,6 @@
+
+import { Button, ButtonLine } from '@pawel-kuznik/react-faceplate';
+import { GangCard } from '../components/GangCard';
 import { useGangStore } from '../store/gangStore';
 import { useNavigate } from 'react-router-dom';
 
@@ -5,13 +8,12 @@ import { useNavigate } from 'react-router-dom';
 /**
  *  A page that displays a list of gangs and allows the user to create a new gang.
  */
-export default function Gangs() {
+export function Gangs() {
   const { gangs, removeGang } = useGangStore();
   const navigate = useNavigate();
 
   return (
     <div>
-      <h1>Gangs</h1>
       <div className="gangs-container">
         <div className="gangs-header">
           <button 
@@ -27,27 +29,14 @@ export default function Gangs() {
           ) : (
             <div className="gangs-grid">
               {gangs.map((gang) => (
-                <div key={gang.id} className="gang-card">
-                  <h3>{gang.name}</h3>
-                  <p>House: {gang.house || 'Not set'}</p>
-                  <p>Members: {gang.members.length}</p>
-                  <p>Credits: {gang.credits}</p>
-                  <p>Reputation: {gang.reputation}</p>
-                  <div className="gang-card-actions">
-                    <button
-                      className="edit-gang-button"
-                      onClick={() => navigate(`/hideout/gang/${gang.id}`)}
-                    >
-                      Edit Gang
-                    </button>
-                    <button
-                      className="delete-gang-button"
-                      onClick={() => removeGang(gang.id)}
-                    >
-                      Delete Gang
-                    </button>
-                  </div>
-                </div>
+                <GangCard
+                  key={gang.id}
+                  gang={gang}
+                  actions={<ButtonLine>
+                    <Button label="Edit" onClick={() => navigate(`/hideout/gang/${gang.id}`)}/>
+                    <Button label="Delete" onClick={() => removeGang(gang.id)}/>
+                  </ButtonLine>}
+                />
               ))}
             </div>
           )}

@@ -1,9 +1,12 @@
 import type { Fighter } from "../types/gang";
+import { getFighterArchetype } from "./getFighterArchetype";
 import { getWeapon } from "./getWeapon";
 
 export function calculateFighterValue(fighter: Fighter) {
 
-    let total = fighter.baseValue;
+    const archetype = getFighterArchetype(fighter.archetypeId);
+
+    let total = archetype.baseValue;
 
     fighter.weapons.forEach(weaponId => {
         total += getWeapon(weaponId).cost;
@@ -11,3 +14,4 @@ export function calculateFighterValue(fighter: Fighter) {
     
     return total;
 }
+

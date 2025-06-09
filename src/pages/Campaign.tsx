@@ -1,6 +1,5 @@
-import React from 'react';
 
-const Campaign: React.FC = () => {
+export function Campaign() {
   return (
     <div>
       <h1>Campaign</h1>
@@ -12,4 +11,3 @@ const Campaign: React.FC = () => {
   );
 };
 
-export default Campaign; 

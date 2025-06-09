@@ -1,10 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useRuleStore } from '../store/ruleStore';
 import type { Rule } from '../types/rule';
 
 type SortDirection = 'asc' | 'desc';
 
-const Rules: React.FC = () => {
+export function Rules() {
   const { rules, addRule, removeRule, updateRule } = useRuleStore();
   const [newRuleTitle, setNewRuleTitle] = useState('');
   const [newRuleDescription, setNewRuleDescription] = useState('');
@@ -180,5 +180,3 @@ const Rules: React.FC = () => {
     </div>
   );
 };
-
-export default Rules; 

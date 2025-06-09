@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGangStore } from '../store/gangStore';
 import { useRosterStore } from '../store/rosterStore';
 import type { Fighter } from '../types/gang';
 
-const PrepareRoster: React.FC = () => {
+export function PrepareRoster () {
   const { id, rosterId } = useParams<{ id: string; rosterId?: string }>();
   const navigate = useNavigate();
   const { gangs } = useGangStore();
@@ -98,5 +98,3 @@ const PrepareRoster: React.FC = () => {
     </div>
   );
 };
-
-export default PrepareRoster; 

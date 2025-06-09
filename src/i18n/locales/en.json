@@ -26,6 +26,13 @@
     "createSuccess": "House created successfully",
     "updateSuccess": "House updated successfully"
   },
+  "createGang": {
+    "name": "Gang Name",
+    "house": "House",
+    "credits": "Starting Credits",
+    "create": "Create Gang",
+    "cancel": "Cancel"
+  },
   "table": {
     "name": "Name",
     "reference": "Reference"
@@ -35,5 +42,14 @@
     "polish": "Polish",
     "german": "German",
     "dutch": "Dutch"
+  },
+  "gangDetails": {
+    "reputation": "Reputation",
+    "credits": "Credits",
+    "value": "Rating",
+    "remove": "Remove Gang",
+    "members": "Members",
+    "rosters": "Rosters",
+    "tradingPost": "Trading Post"
   }
 } 

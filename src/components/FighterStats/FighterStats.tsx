@@ -1,5 +1,7 @@
 import { DataTable } from '@pawel-kuznik/react-faceplate';
 import type { Fighter } from '../../types/gang';
+import { DiceTest } from '../DiceTest';
+import { Distance } from '../Distance';
 
 interface FighterStatsProps {
     fighter: Fighter;
@@ -10,7 +12,6 @@ export function FighterStats({ fighter }: FighterStatsProps) {
     const attributes = fighter.attributes;
 
     const columns = [
-        "XP",
         "M",
         "WS",
         "BS",
@@ -27,19 +28,18 @@ export function FighterStats({ fighter }: FighterStatsProps) {
 
     const data = [
         [
-            fighter.xp,
-            attributes.movement,
-            attributes.weaponSkill,
-            attributes.ballisticSkill,
+            <Distance value={attributes.movement} />,
+            <DiceTest value={attributes.weaponSkill} />,
+            <DiceTest value={attributes.ballisticSkill} />,
             attributes.strength,
             attributes.toughness,
             attributes.wounds,
-            attributes.initiative,
+            <DiceTest value={attributes.initiative} />,
             attributes.attacks,
-            attributes.leadership,
-            attributes.coolness,
-            attributes.willPower,
-            attributes.intellect
+            <DiceTest value={attributes.leadership} />,
+            <DiceTest value={attributes.coolness} />,
+            <DiceTest value={attributes.willPower} />,
+            <DiceTest value={attributes.intellect} />
         ]
     ]
 

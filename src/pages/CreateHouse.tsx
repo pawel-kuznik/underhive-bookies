@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BasicForm, Button, FormField } from "@pawel-kuznik/react-faceplate";
+import { BasicForm, Button, ButtonLine, FormField } from "@pawel-kuznik/react-faceplate";
 import { useHouseStore } from '../store/houseStore';
-import type { House } from '../types/house';
 
-const CreateHouse: React.FC = () => {
+/**
+ *  A page to create a new house. 
+ */
+export function CreateHouse() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { id } = useParams();
@@ -40,6 +42,8 @@ const CreateHouse: React.FC = () => {
   };
 
   return (
+
+
     <BasicForm onSubmit={handleSubmit}>
       <FormField
         type="text"
@@ -53,12 +57,10 @@ const CreateHouse: React.FC = () => {
         name="reference"
       />
 
-      <div className="form-actions">
+      <ButtonLine>
         <Button submit label={isEditing ? t('house.edit') : t('house.create')} />
         <Button onClick={() => navigate('/codex/houses')} label={t('common.cancel')} />
-      </div>
+      </ButtonLine>
     </BasicForm>
   );
 };
-
-export default CreateHouse; 

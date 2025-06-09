@@ -1,8 +1,7 @@
-import React from 'react';
 import { useEquipmentStore } from '../store/equipmentStore';
 import './Equipment.css';
 
-const Equipment: React.FC = () => {
+export function Equipment() {
   const { equipment } = useEquipmentStore();
 
   return (
@@ -24,5 +23,3 @@ const Equipment: React.FC = () => {
     </div>
   );
 };
-
-export default Equipment; 

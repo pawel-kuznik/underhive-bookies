@@ -15,6 +15,8 @@ export function purchaseWeaponForFighter(gangId: string, fighterId: string, weap
     const fighter = gang.members.find(m => m.id === fighterId);
     if (!fighter) throw new Error(`Fighter with id ${fighterId} not found`);
 
+    gang.credits -= weapon.cost;
+
     const updatedFighter = addWeaponToFighter(fighter, weaponId);    
     const updatedGang = updateGangFighter(gang, updatedFighter);
 

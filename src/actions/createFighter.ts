@@ -1,14 +1,17 @@
 import type { Fighter } from "../types/gang";
 
-export function createFighter(name: string) : Fighter {
+/**
+ *  Create an empty fighter object.
+ */
+export function createFighter(name: string): Fighter {
     return {
-          id: crypto.randomUUID(),
-          name: name,
-          baseValue: 0,
-          templateId: 'default', // This should be selected from available templates
-          xp: 0,
-          archetypeId: 'default',
-          attributes: {
+        id: crypto.randomUUID(),
+        name: name,
+        baseValue: 0,
+        templateId: 'default', // This should be selected from available templates
+        xp: 0,
+        archetypeId: 'default',
+        attributes: {
             movement: 4,
             weaponSkill: 3,
             ballisticSkill: 3,
@@ -21,10 +24,10 @@ export function createFighter(name: string) : Fighter {
             coolness: 6,
             willPower: 6,
             intellect: 6,
-          },
-          weapons: [],
-          wargear: [],
-          specialRules: [],
-        };
-    
+        },
+        weapons: [],
+        wargear: [],
+        specialRules: [],
+    };
+
 }

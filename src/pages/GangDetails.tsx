@@ -1,99 +1,83 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGangStore } from '../store/gangStore';
 import { FighterForm } from '../components/FighterForm';
-import { FighterCard } from '../components/FighterCard';
 import { addCreditsToGang } from '../actions/addCreditsToGang';
-import { Button, ButtonLine, Page } from '@pawel-kuznik/react-faceplate';
+import { Button, ButtonLine, Page, TabsFrame } from '@pawel-kuznik/react-faceplate';
 import { useHouse } from '../utils/useHouse';
 import { DescriptiveTitle } from '../components/DescriptiveTitle/DescriptiveTitle';
 import { Counter } from '../components/Counter';
 import { calculateGangValue } from '../actions/calculateGangValue';
+import { useTranslation } from 'react-i18next';
+import { Members } from './GangDetails/Members';
+import { TradingPost } from './GangDetails/TradingPost';
+import { Stash } from './GangDetails/Stash';
+import { Rosters } from './GangDetails/Rosters';
+import { Overview } from './GangDetails/Overview';
 
 /**
  *  A page that displays the details of a gang.
  */
-export default function GangDetails() {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-  const { gangs, updateGang, removeGang } = useGangStore();
-  const gang = gangs.find(g => g.id === id);
+export function GangDetails() {
+    const { t } = useTranslation();
+    const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
+    const { gangs, removeGang } = useGangStore();
+    const gang = gangs.find(g => g.id === id);
 
-  if (!gang) {
-    return <div>Gang not found</div>;
-  }
+    if (!gang) {
+        return <div>Gang not found</div>;
+    }
 
-  const house = useHouse(gang.house);
+    const house = useHouse(gang.house);
 
-  const handleRemoveMember = (memberId: string) => {
-    const updatedGang = {
-      ...gang,
-      members: gang.members.filter(m => m.id !== memberId),
+    const handleAddCredits = (credits: number) => {
+        addCreditsToGang(gang.id, credits);
     };
-    updateGang(updatedGang);
-  };
 
-  const handleAddCredits = (credits: number) => {
-    addCreditsToGang(gang.id, credits);
-  };
+    const handleRemoveGang = () => {
 
-  const handleRemoveGang = () => {
+        // TODO: Add a confirmation dialog
 
-    // TODO: Add a confirmation dialog
+        removeGang(gang.id);
+        navigate('/hideout/gangs');
+    };
 
-    removeGang(gang.id);
-    navigate('/hideout/gangs');
-  };
+    return (
+        <Page>
+            <DescriptiveTitle title={gang.name} description={house.name}>
+                <ButtonLine>
+                    <Counter value={gang.reputation} label={t("gangDetails.reputation")} />
+                    <Counter value={gang.credits} label={t("gangDetails.credits")} />
+                    <Counter value={calculateGangValue(gang)} label={t("gangDetails.value")} />
+                    <Button label={t("gangDetails.remove")} color="red" onClick={handleRemoveGang} />
+                </ButtonLine>
+            </DescriptiveTitle>
 
-  return (
-    <Page>
-      <DescriptiveTitle title={gang.name} description={house.name}>
-        <ButtonLine>
-          <Counter value={gang.reputation} label="Reputation"/>
-          <Counter value={gang.credits} label="Credits"/>
-          <Counter value={calculateGangValue(gang)} label="Value"/>
-          <Button label="Remove" color="red" onClick={handleRemoveGang}/>
-        </ButtonLine>
-      </DescriptiveTitle>
+            <TabsFrame>
+                <TabsFrame.Tab label={t("gangDetails.overview")}>
+                    <Overview gang={gang} />
+                </TabsFrame.Tab>
+                <TabsFrame.Tab label={t("gangDetails.members")}>
+                    <Members gang={gang} />
+                </TabsFrame.Tab>
+                <TabsFrame.Tab label={t("gangDetails.stash")}>
+                    <Stash gang={gang} />
+                </TabsFrame.Tab>
+                <TabsFrame.Tab label={t("gangDetails.rosters")}>
+                    <Rosters gang={gang} />
+                </TabsFrame.Tab>
+                <TabsFrame.Tab label={t("gangDetails.tradingPost")}>
+                    <TradingPost gang={gang} />
+                </TabsFrame.Tab>
+            </TabsFrame>
 
-        <div className="gang-info">
-          <div className="gang-stats">
-            <button onClick={() => handleAddCredits(100)}>Add Credits</button>
-            <button 
-              className="trading-post-button"
-              onClick={() => navigate(`/hideout/gang/${gang.id}/trading-post`)}
-            >
-              Visit Trading Post
-            </button>
-            <button 
-              className="prepare-roster-button"
-              onClick={() => navigate(`/hideout/gang/${gang.id}/prepare-roster`)}
-            >
-              Prepare Roster
-            </button>
-            <button 
-              className="view-rosters-button"
-              onClick={() => navigate(`/hideout/gang/${gang.id}/rosters`)}
-            >
-              View Rosters
-            </button>
-          </div>
+            <div className="gang-info">
+                <div className="gang-stats">
+                    <button onClick={() => handleAddCredits(100)}>Add Credits</button>
+                </div>
 
-          <div>
-            <div className="add-member">
-              <FighterForm gangId={gang.id}/>
+                <FighterForm gangId={gang.id} />
             </div>
-
-            <div className="members-list">
-              {gang.members.map((member) => (
-                <FighterCard
-                  key={member.id}
-                  fighter={member}
-                  onRemoveMember={handleRemoveMember}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-    </Page>
-  );
+        </Page>
+    );
 };

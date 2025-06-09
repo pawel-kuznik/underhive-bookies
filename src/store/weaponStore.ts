@@ -6,6 +6,7 @@ interface WeaponStore {
   weapons: Weapon[];
   addWeapon: (weapon: Weapon) => void;
   removeWeapon: (id: string) => void;
+  storeWeapon: (weapon: Weapon) => void;
   updateWeapon: (weapon: Weapon) => void;
   findWeaponById: (id: string) => Weapon | undefined;
   findWeaponByName: (name: string) => Weapon | undefined;
@@ -30,6 +31,24 @@ export const useWeaponStore = create<WeaponStore>((set, get) => ({
     set((state) => ({
       weapons: state.weapons.map((w) => (w.id === weapon.id ? weapon : w)),
     }));
+  },
+
+  storeWeapon: (weapon: Weapon) => {
+    set((state) => {
+
+      const existing = state.weapons.find((w) => w.id === weapon.id);
+
+      if (existing) {
+        return {
+          weapons: state.weapons.map((w) => (w.id === weapon.id ? weapon : w)),
+        }
+      }
+      else {
+        return {
+          weapons: [...state.weapons, weapon],
+        }
+      }
+    });
   },
 
   findWeaponById: (id: string) => {

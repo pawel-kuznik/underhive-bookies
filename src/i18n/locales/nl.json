@@ -26,6 +26,13 @@
     "createSuccess": "Huis succesvol aangemaakt",
     "updateSuccess": "Huis succesvol bijgewerkt"
   },
+  "createGang": {
+    "name": "Bendenaam",
+    "house": "Huis",
+    "credits": "Startkredieten",
+    "create": "Bende aanmaken",
+    "cancel": "Annuleren"
+  },
   "table": {
     "name": "Naam",
     "reference": "Referentie"
@@ -35,5 +42,14 @@
     "polish": "Pools",
     "german": "Duits",
     "dutch": "Nederlands"
+  },
+  "gangDetails": {
+    "reputation": "Reputatie",
+    "credits": "Credits",
+    "value": "Beoordeling",
+    "remove": "Bende Verwijderen",
+    "members": "Leden",
+    "rosters": "Rosters",
+    "tradingPost": "Handelspost"
   }
 } 

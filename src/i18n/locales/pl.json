@@ -26,6 +26,13 @@
     "createSuccess": "Dom został utworzony",
     "updateSuccess": "Dom został zaktualizowany"
   },
+  "createGang": {
+    "name": "Nazwa Gangu",
+    "house": "Dom",
+    "credits": "Początkowe Kredyty",
+    "create": "Utwórz Gang",
+    "cancel": "Anuluj"
+  },
   "table": {
     "name": "Nazwa",
     "reference": "Referencja"
@@ -35,5 +42,14 @@
     "polish": "Polski",
     "german": "Niemiecki",
     "dutch": "Holenderski"
+  },
+  "gangDetails": {
+    "reputation": "Reputacja",
+    "credits": "Kredyty",
+    "value": "Ocena",
+    "remove": "Usuń Gang",
+    "members": "Członkowie",
+    "rosters": "Listy",
+    "tradingPost": "Targowisko"
   }
 } 

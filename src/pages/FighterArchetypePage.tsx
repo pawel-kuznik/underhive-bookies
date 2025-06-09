@@ -1,9 +1,8 @@
-import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFighterArchetypeStore } from '../store/fighterArchetypeStore';
 import FighterArchetypeForm from '../components/FighterArchetypeForm/FighterArchetypeForm';
 
-const FighterArchetypePage: React.FC = () => {
+export function FighterArchetypePage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { archetypes } = useFighterArchetypeStore();
@@ -29,5 +28,3 @@ const FighterArchetypePage: React.FC = () => {
     </div>
   );
 };
-
-export default FighterArchetypePage; 

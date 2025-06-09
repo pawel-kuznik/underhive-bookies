@@ -1,10 +1,14 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BasicForm, Button, FormField } from "@pawel-kuznik/react-faceplate";
+import { BasicForm, Button, ButtonLine, FormField } from "@pawel-kuznik/react-faceplate";
 import { HouseFormField } from '../components/HouseFormField/HouseFormField';
 import { useGangStore } from '../store/gangStore';
+import { useTranslation } from 'react-i18next';
 
-const CreateGang: React.FC = () => {
+/**
+ *  A page to create a new gang. 
+ */
+export function CreateGang() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const { createGang, findGangByName, updateGang } = useGangStore();
 
@@ -15,43 +19,40 @@ const CreateGang: React.FC = () => {
         const gang = findGangByName(data.name.trim());
 
         if (gang) {
-            const updatedGang = {
+            updateGang({
                 ...gang,
                 house: data.houseId,
                 credits: parseInt(data.credits) || 0
-            };
-            updateGang(updatedGang);
-        }
+            });
 
-        navigate('/hideout/gangs');
+            navigate(`/hideout/gang/${gang.id}`);
+        }
     };
 
     return (
         <BasicForm onSubmit={handleSubmit}>
             <FormField
                 type="text"
-                label="Gang Name"
+                label={t('createGang.name')}
                 name="name"
             />
 
             <HouseFormField
                 name="houseId"
-                label="House"
+                label={t('createGang.house')}
             />
 
             <FormField
                 type="number"
-                label="Starting Credits"
+                label={t(t('createGang.credits'))}
                 name="credits"
                 defaultValue="1000"
             />
 
-            <div className="form-actions">
-                <Button submit label="Create Gang" />
-                <Button onClick={() => navigate('/hideout/gangs')} label="Cancel" />
-            </div>
+            <ButtonLine>
+                <Button submit label={t("createGang.create")} />
+                <Button onClick={() => navigate('/hideout/gangs')} label={t("createGang.cancel")} />
+            </ButtonLine>
         </BasicForm>
     );
 };
-
-export default CreateGang; 
